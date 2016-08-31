@@ -1,0 +1,48 @@
+div.row-fluid(ng-if='loadingValue != 100')
+  div.col-md-12
+    div.panel.panel-danger
+      div.panel-heading.text-left
+        h3 {{ loadingText }}
+      div.panel-body.text-center
+        uib-progressbar(value='loadingValue', type='danger') {{ loadingValue | number:0 }}%
+    
+div.row-fluid
+  div.col-md-3
+    div.panel.panel-info
+      div.panel-heading.text-center
+        h3 Overall Progress
+      div.panel-body.text-center
+        h1 {{ percentageComplete }}%
+        p ({{overallClosedStoryPoints}} closed / {{ overallStoryPoints }} total)
+  div.col-md-3
+    div.panel.panel-primary
+      div.panel-heading.text-center
+        h3 Team Velocity
+      div.panel-body.text-center
+        h1 {{ teamVelocity }} points
+        p ({{ overallClosedStoryPoints-1000 }} points / {{ numberOfSprints }} sprints / {{ numberOfStaff }} people)
+  div.col-md-3
+    div.panel.panel-success
+      div.panel-heading.text-center
+        h3 Projected End Date
+      div.panel-body.text-center
+        h1 {{ overallEndDate }}
+        p ({{ endDateTeamName }})
+  div.col-md-3
+    div.panel.panel-warning
+      div.panel-heading.text-center
+        h3 Sprints Completed
+      div.panel-body.text-center
+        // +7 to show the correct sprint number as per the schedule
+        h1 {{numberOfSprints+7}} 
+        p &nbsp; 
+        
+div.row-fluid
+  div.col-md-12
+    p &nbsp;
+    
+div.row-fluid
+  div(gantt='', data='data', headers='["year", "month"]', api="registerApi")
+    gantt-table
+    gantt-tooltips
+    gantt-resize-sensor

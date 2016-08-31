@@ -1,0 +1,18 @@
+node_modules/*
+bower_components/*
+
+testresults/*
+typings/*
+coverage/*
+report/*
+uploads/*
+dist/*
+
+performance.log
+libpeerconnection.log
+npm-debug.log
+unit.xml
+
+# Environment configuration for the server
+.env 
+.env_aws
